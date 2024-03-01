@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .log {
+            text-decoration: none;
+            color: white;
+            text-decoration-color: white;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <header>
+                <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" data-bs-theme="dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="Home.aspx">Application</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="ProfilePage.aspx">Profile</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <asp:PlaceHolder ID="loginPlaceHolder" runat="server">
+                                    <asp:HyperLink ID="HyperLink3" CssClass="nav-link active" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink4" CssClass="nav-link active" runat="server" NavigateUrl="~/Register.aspx">Register</asp:HyperLink>
+                                </asp:PlaceHolder>
+                                <li class="nav-item" style="color: white">
+                                    <asp:PlaceHolder ID="logoutPlaceHolder" runat="server" Visible="false">Welcome <%=HttpContext.Current.Session["name"]%>,
+                                        <asp:HyperLink ID="Hyperlink5" CssClass="log" runat="server" NavigateUrl="~/Logout.aspx">Logout</asp:HyperLink>
+                                    </asp:PlaceHolder>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy;<%: DateTime.Now %> - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
